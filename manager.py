@@ -5,7 +5,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv
 load_dotenv()
 
-employees = st.text_input("Please provide the names of your employees separated by commas")
+employees = st.text_input("Please provide the names of your employees separated by commas :blue[This is only for the prototype, in a real world scenario, this would be optained through infyme or teams.]")
 if st.button("Submit"):
     employees = employees.split(',')
     employees = [e.strip() for e in employees]
@@ -22,7 +22,10 @@ txtaws = ""
 
 for i,name in enumerate(employees):
     txtaws += f"\n\n\nEmployee{i}:"
-    aws = pd.read_csv(f"data/{name}.csv", index_col=0).T
+    try:
+        aws = pd.read_csv(f"data/{name}.csv", index_col=0).T
+    except FileNotFoundError:
+        st.write(f":red[{name}'s data file not found], please check the spelling of the name and make sure it exists.")
     #st.write(aws)
     for day in aws.columns:
         txtaws += f"\n\n{day}:"
@@ -51,7 +54,8 @@ for name in employees:
         ok = False
         st.write(f":red[{name}'s wellbeing is not okay], you should have a chat with them to see how you can help.")
 
-ch = prompt | llm | to_txt
-
-
-st.write(ch.invoke({}))
+if len(employees) <= 3:
+    st.write(f"To keep data private and anonymous, we only provide recommendations for teams of more than employees.")
+else:
+    ch = prompt | llm | to_txt
+    st.write(ch.invoke({}))
