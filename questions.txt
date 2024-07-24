@@ -1,5 +1,4 @@
-a
-b
-c
-d
-a
+open|Question ouverte 1
+multiple|How do you feel today?|Mood swings, Not in control, Happy, Sad, Sensitive, Angry, Confident, Excited, Irritable, Anxious, Insecure, Grateful, Indifferent
+open|Question ouverte 2
+multiple|Question fermée 2|Option A,Option B,Option C
