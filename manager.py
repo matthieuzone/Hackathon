@@ -42,5 +42,16 @@ prompt = ChatPromptTemplate.from_messages([
 def to_txt(msg):
     return msg.content
 
+with open("data/alarms.txt", 'r') as f:
+    alarms = f.readlines()
+    alarms = [a.strip() for a in alarms]
+ok = True
+for name in employees:
+    if name in alarms:
+        ok = False
+        st.write(f":red[{name}'s wellbeing is not okay], you should have a chat with them to see how you can help.")
+
 ch = prompt | llm | to_txt
+
+
 st.write(ch.invoke({}))

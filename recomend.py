@@ -43,6 +43,29 @@ def run(name):
         return msg.content
 
     ch = prompt | llm | to_txt
+    
+
+    prompt2 = ChatPromptTemplate.from_messages([
+        ('system', inst),
+        ('user', txtaws),
+        ('system', f"""
+            Based on his awnsers, reply 'yes' if the user's wellbeing is okay, and 'no' if something needs to be done about it.
+        """)
+    ])
+
+    def alarm(msg):
+        msg = msg.content.lower()
+        if 'no' in msg:
+            st.write("you don't seem to be in great shape, would you like to let your manager know?")
+            if st.button("yes"):
+                with open("data/alarms.txt", 'a') as f:
+                    f.write(name + '\n')
+            if st.button("no"):
+                pass
+
+    ch2 = prompt2 | llm | alarm
+
+    ch2.invoke({})
     st.write(ch.invoke({}))
 
 if __name__ == "__main__":
