@@ -19,10 +19,10 @@ def run():
         q_type = parts[0]
         question_text = parts[2]
         
-        if q_type == 'mandatory':
-            mandatory_questions.append((parts[1], question_text, parts[3] if len(parts) > 3 else None))
-        elif q_type == 'optional':
-            optional_questions.append((parts[1], question_text, parts[3] if len(parts) > 3 else None))
+        if q_type == 'mood':
+            mood_questions.append((parts[1], question_text, parts[3] if len(parts) > 3 else None))
+        elif q_type == 'ghq':
+            ghq_questions.append((parts[1], question_text, parts[3] if len(parts) > 3 else None))
 
     # Charger les réponses précédentes
     df = pd.read_csv("data/{name}.csv", index_col=0)
