@@ -13,6 +13,8 @@ awns = {}
 day = time.strftime(r"%d/%m/%Y")
 
 for q in questions:
+    q = q.strip()
+    q = q.replace("\n", "")
     awns[q] = st.text_input(q, key=q)
 
 new = pd.DataFrame(awns, index=[day])

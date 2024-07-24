@@ -1,5 +1,2 @@
-a
-b
-c
-d
-a
+how would you rate your happiness today
+how stress did you feel today

@@ -23,7 +23,17 @@ for day in aws.columns:
     txtaws += f"\n\n{day}:"
     for q in aws.index:
         a = aws.loc[q, day]
-        if a not in ["", "nan", None, np.nan]:
+        if not pd.isna(a):
             txtaws += f"\n{q}: {a}"
-print(txtaws)
-st.write(llm("I am feeling sad today").content)
+
+prompt = ChatPromptTemplate.from_messages([
+    ('system', inst),
+    ('user', txtaws),
+    ('system', "Based on his awnsers, give recommendations to the user on how to improve his mental, physical and emotional health.")
+])
+
+def to_txt(msg):
+    return msg.content
+
+ch = prompt | llm | to_txt
+st.write(ch.invoke({}))
