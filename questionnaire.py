@@ -3,7 +3,7 @@ import pandas as pd
 import time
 import random
 
-def run():
+def run(name):
     st.write("Questionnaire")
 
     # Lire les questions et les options à partir du fichier
@@ -58,7 +58,7 @@ def run():
 
     # Enregistrer les réponses lorsqu'on clique sur le bouton
     if st.button("Save"):
-        df.to_csv("awnsers.csv")
+        df.to_csv(f"data/{name}.csv")
 
 if __name__ == "__main__":
     run('test')
