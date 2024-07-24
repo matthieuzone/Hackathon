@@ -1,13 +1,14 @@
-mandatory|multiple|How do you feel today?|Mood swings, Not in control, Happy, Sad, Sensitive, Angry, Confident, Excited, Irritable, Anxious, Insecure, Grateful, Indifferent
-optional|multiple|Were you able to concentrate on what you were doing?|Better than usual,As usual,Less than usual,Much less than usual
-optional|multiple|Have your worries kept you from sleeping?|Not at all,No more than usual,Rather more than usual,Much more than usual
-optional|open|Did you feel like you were playing a useful role?
-optional|multiple|Did you feel capable of making decisions?|Rather more than usual,As usual,Rather less than usual,Much less capable
-optional|open|Did you feel constantly under pressure?
-optional|multiple|Have you felt like you couldn't overcome your difficulties?|Not at all,No more than usual,A little more than usual,Much more than usual
-optional|multiple|Were you able to enjoy your daily activities?|Rather more than usual,As usual,Rather less than usual,Much less than usual
-optional|open|Were you able to face your problems?
-optional|multiple|Have you felt unhappy, depressed?|Not at all,No more than usual,A little more than usual,Much more than usual
-optional|open|Have you lost confidence in yourself?
-optional|multiple|Have you thought that you are worthless?|Not at all,No more than usual,A little more than usual,Much more than usual
-optional|open|Did you feel relatively happy overall?
+mood|multiple|How do you feel today?|Mood swings, Not in control, Happy, Sad, Sensitive, Angry, Confident, Excited, Irritable, Anxious, Insecure, Grateful, Indifferent
+mood|multiple|How would you describe you energy?|Exhausted, Tired, Ok, Energetic
+ghq|multiple|Recently, were you able to concentrate on what you were doing?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, have your worries kept you from sleeping?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, did you feel like you were playing a useful role?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, did you feel capable of making decisions?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, did you feel constantly under pressure?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, have you felt like you couldn't overcome your difficulties?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, were you able to enjoy your daily activities?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, were you able to face your problems?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, have you felt unhappy, depressed?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, have you lost confidence in yourself?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, have you thought that you are worthless?|better than usual,as usual,less than usual,much less than usual
+ghq|multiple|Recently, did you feel relatively happy overall?|better than usual,as usual,less than usual,much less than usual

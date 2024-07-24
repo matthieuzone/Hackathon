@@ -10,8 +10,8 @@ with open("questions.txt") as f:
     questions = f.readlines()
 
 # Séparer les questions obligatoires des questions optionnelles
-mandatory_questions = []
-optional_questions = []
+mood_questions = []
+ghq_questions = []
 
 for q in questions:
     parts = q.strip().split('|')
@@ -30,7 +30,7 @@ awns = {}
 day = time.strftime(r"%d/%m/%Y")
 
 # Ajouter les questions obligatoires
-for q_type, question_text, options in mandatory_questions:
+for q_type, question_text, options in mood_questions:
     if q_type == 'multiple':
         options = options.split(',')
         awns[question_text] = st.selectbox(question_text, options, key=question_text)
@@ -38,7 +38,7 @@ for q_type, question_text, options in mandatory_questions:
         awns[question_text] = st.text_input(question_text, key=question_text)
 
 # Sélectionner 3 questions aléatoires parmi les optionnelles
-random_questions = random.sample(optional_questions, 3)
+random_questions = random.sample(ghq_questions, 3)
 
 # Afficher les questions aléatoires
 for q_type, question_text, options in random_questions:
