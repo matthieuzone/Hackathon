@@ -59,6 +59,7 @@ def run(name):
     # Enregistrer les réponses lorsqu'on clique sur le bouton
     if st.button("Save"):
         df.to_csv(f"data/{name}.csv")
+        st.rerun()
 
 if __name__ == "__main__":
     run('test')

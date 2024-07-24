@@ -7,7 +7,7 @@ load_dotenv()
 
 import streamlit as st
 
-def run():
+def run(name):
     llm = AzureChatOpenAI(azure_deployment='gpt-4')
 
     inst = """You are a personal wellness assistant, designed to help users track their mood and provide helpful resources.
@@ -19,7 +19,7 @@ def run():
     with open("recomendations.txt", encoding='utf-8' ) as f:
         recomendations = f.read()
 
-    aws = pd.read_csv("awnsers.csv", index_col=0).T
+    aws = pd.read_csv(f"data/{name}.csv", index_col=0).T
 
     #st.write(aws)
 
@@ -46,4 +46,4 @@ def run():
     st.write(ch.invoke({}))
 
 if __name__ == "__main__":
-    run()
+    run('test')
