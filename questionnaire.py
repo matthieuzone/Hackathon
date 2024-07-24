@@ -9,9 +9,19 @@ st.write("Questionnaire")
 with open("questions.txt") as f:
     questions = f.readlines()
 
-# Séparer la première question des autres
-first_question = questions[0]
-remaining_questions = questions[1:]
+# Séparer les questions obligatoires des questions optionnelles
+mandatory_questions = []
+optional_questions = []
+
+for q in questions:
+    parts = q.strip().split('|')
+    q_type = parts[0]
+    question_text = parts[2]
+    
+    if q_type == 'mandatory':
+        mandatory_questions.append((parts[1], question_text, parts[3] if len(parts) > 3 else None))
+    elif q_type == 'optional':
+        optional_questions.append((parts[1], question_text, parts[3] if len(parts) > 3 else None))
 
 # Charger les réponses précédentes
 df = pd.read_csv("awnsers.csv", index_col=0)
@@ -19,27 +29,24 @@ awns = {}
 
 day = time.strftime(r"%d/%m/%Y")
 
-# Ajouter la première question
-q_type, question = first_question.strip().split('|', 1)
-if q_type == 'multiple':
-    question, options = question.split('|')
-    options = options.split(',')
-    awns[question] = st.selectbox(question, options, key=question)
-elif q_type == 'open':
-    awns[question] = st.text_input(question, key=question)
+# Ajouter les questions obligatoires
+for q_type, question_text, options in mandatory_questions:
+    if q_type == 'multiple':
+        options = options.split(',')
+        awns[question_text] = st.selectbox(question_text, options, key=question_text)
+    elif q_type == 'open':
+        awns[question_text] = st.text_input(question_text, key=question_text)
 
-# Sélectionner 3 questions aléatoires parmi les restantes
-random_questions = random.sample(remaining_questions, 3)
+# Sélectionner 3 questions aléatoires parmi les optionnelles
+random_questions = random.sample(optional_questions, 3)
 
 # Afficher les questions aléatoires
-for q in random_questions:
-    q_type, question = q.strip().split('|', 1)
+for q_type, question_text, options in random_questions:
     if q_type == 'multiple':
-        question, options = question.split('|')
         options = options.split(',')
-        awns[question] = st.selectbox(question, options, key=question)
+        awns[question_text] = st.selectbox(question_text, options, key=question_text)
     elif q_type == 'open':
-        awns[question] = st.text_input(question, key=question)
+        awns[question_text] = st.text_input(question_text, key=question_text)
 
 # Ajouter les nouvelles réponses au dataframe
 new = pd.DataFrame(awns, index=[day])
