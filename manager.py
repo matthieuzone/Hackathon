@@ -25,7 +25,7 @@ for i,name in enumerate(employees):
     try:
         aws = pd.read_csv(f"data/{name}.csv", index_col=0).T
     except FileNotFoundError:
-        st.write(f":red[{name}'s data file not found], please check the spelling of the name and make sure it exists.")
+        st.write(f"{name} never awnsered the questionnaire, or maybe you misspelled their name.")
     #st.write(aws)
     for day in aws.columns:
         txtaws += f"\n\n{day}:"
@@ -38,7 +38,7 @@ prompt = ChatPromptTemplate.from_messages([
     ('system', inst),
     ('user', txtaws),
     ('system', f"""
-        Based on their awnsers, give a report to the manager of the wellbeing of his team, and recommendations how he can improve the work environment for their employees.
+        Based on their awnsers, give the manager an assesment of the wellbeing of his team, and recommendations how he can improve the work environment for their employees.
     """)
 ])
 
@@ -52,10 +52,10 @@ ok = True
 for name in employees:
     if name in alarms:
         ok = False
-        st.write(f":red[{name}'s wellbeing is not okay], you should have a chat with them to see how you can help.")
+        st.warning(f":red[{name}'s wellbeing is not okay], you should have a chat with them to see how you can help.")
 
 if len(employees) <= 3:
-    st.write(f"To keep data private and anonymous, we only provide recommendations for teams of more than employees.")
+    st.write(f"To keep data private and anonymous, we only provide recommendations for teams of more than three employees.")
 else:
     ch = prompt | llm | to_txt
     st.write(ch.invoke({}))

@@ -36,6 +36,8 @@ def run(name):
         ('system', f"""
             Based on his awnsers, give recommendations to the user on how to improve his mental, physical and emotional health.
             here is a list of recomendations you can choose form: {recomendations}
+            Your awnser sould only contain the recomendations you think are best for the user, and be a few sentences long.
+            Please also provide a simple goal for the user to achieve in the day.
         """)
     ])
 
