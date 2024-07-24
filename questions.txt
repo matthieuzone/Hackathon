@@ -1,4 +1,13 @@
-open|Question ouverte 1
 multiple|How do you feel today?|Mood swings, Not in control, Happy, Sad, Sensitive, Angry, Confident, Excited, Irritable, Anxious, Insecure, Grateful, Indifferent
-open|Question ouverte 2
-multiple|Question fermée 2|Option A,Option B,Option C
+multiple|Were you able to concentrate on what you were doing?|Better than usual,As usual,Less than usual,Much less than usual
+multiple|Have your worries kept you from sleeping?|Not at all,No more than usual,Rather more than usual,Much more than usual
+multiple|Did you feel like you were playing a useful role?|Rather more than usual,As usual,Less useful than usual,Much less useful
+multiple|Did you feel capable of making decisions?|Rather more than usual,As usual,Rather less than usual,Much less capable
+multiple|Did you feel constantly under pressure?|Not at all,No more than usual,A little more than usual,Much more than usual
+multiple|Have you felt like you couldn't overcome your difficulties?|Not at all,No more than usual,A little more than usual,Much more than usual
+multiple|Were you able to enjoy your daily activities?|Rather more than usual,As usual,Rather less than usual,Much less than usual
+multiple|Were you able to face your problems?|Rather more than usual,As usual,Less capable than usual,Much less capable
+multiple|Have you felt unhappy, depressed?|Not at all,No more than usual,A little more than usual,Much more than usual
+multiple|Have you lost confidence in yourself?|Not at all,No more than usual,A little more than usual,Much more than usual
+multiple|Have you thought that you are worthless?|Not at all,No more than usual,A little more than usual,Much more than usual
+multiple|Did you feel relatively happy overall?|Rather more than usual,Pretty much as usual,Rather less than usual,Much less than usual
