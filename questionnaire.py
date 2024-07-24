@@ -25,7 +25,7 @@ def run(name):
             ghq_questions.append((parts[1], question_text, parts[3] if len(parts) > 3 else None))
 
     # Charger les réponses précédentes
-    df = pd.read_csv("data/{name}.csv", index_col=0)
+    df = pd.read_csv(f"data/{name}.csv", index_col=0)
     awns = {}
 
     day = time.strftime(r"%d/%m/%Y")
