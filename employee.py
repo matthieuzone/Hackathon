@@ -24,7 +24,7 @@ with open(f"data/{name}.csv", 'r') as f:
 day = time.strftime(r"%d/%m/%Y")
 
 if day in aws.columns:
-    st.write("Thank you for awnsering the questionnaire today!, here are your some recomendations for you : ")
+    st.header("Thank you for awnsering the questionnaire today! Here are a few goals for today : ")
     recomend.run(name)
 else:
     questionnaire.run(name)

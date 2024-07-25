@@ -34,10 +34,10 @@ def run(name):
         ('system', inst),
         ('user', txtaws),
         ('system', f"""
-            Based on his awnsers, give recommendations to the user on how to improve his mental, physical and emotional health.
-            here is a list of recomendations you can choose form: {recomendations}
-            Your awnser sould only contain the recomendations you think are best for the user, and be a few sentences long.
-            Please also provide a simple goal for the user to achieve in the day.
+            You are talking to the user,
+            Based on his awnsers, give him a simple goal for the day, to help improve his mental, physical and emotional health.
+            here is a list of recomendations you can choose form: {recomendations}.
+            keep the awnser short and simple.
         """)
     ])
 
@@ -51,13 +51,14 @@ def run(name):
         ('system', inst),
         ('user', txtaws),
         ('system', f"""
-            Based on his awnsers, reply 'yes' if the user's wellbeing is okay, and 'no' if something needs to be done about it.
+            Based on his awnsers, reply 'yes' if the user's wellbeing is okay, and 'no' if something really needs to be done about it.
         """)
     ])
 
     def alarm(msg):
         msg = msg.content.lower()
         if 'no' in msg:
+            st.markdown("""---""")
             st.write("you don't seem to be in great shape, would you like to let your manager know?")
             if st.button("yes"):
                 with open("data/alarms.txt", 'a') as f:
@@ -67,8 +68,8 @@ def run(name):
 
     ch2 = prompt2 | llm | alarm
 
-    ch2.invoke({})
     st.write(ch.invoke({}))
+    ch2.invoke({})
 
 if __name__ == "__main__":
     run('test')
