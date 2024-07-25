@@ -7,7 +7,7 @@ load_dotenv()
 
 import streamlit as st
 
-def run():
+def run(name):
     llm = AzureChatOpenAI(azure_deployment='gpt-4')
 
     inst = """You are a personal wellness assistant, designed to help users track their mood and provide helpful resources.
@@ -19,7 +19,7 @@ def run():
     with open("recomendations.txt", encoding='utf-8' ) as f:
         recomendations = f.read()
 
-    aws = pd.read_csv("awnsers.csv", index_col=0).T
+    aws = pd.read_csv(f"data/{name}.csv", index_col=0).T
 
     #st.write(aws)
 
@@ -36,6 +36,8 @@ def run():
         ('system', f"""
             Based on his awnsers, give recommendations to the user on how to improve his mental, physical and emotional health.
             here is a list of recomendations you can choose form: {recomendations}
+            Your awnser sould only contain the recomendations you think are best for the user, and be a few sentences long.
+            Please also provide a simple goal for the user to achieve in the day.
         """)
     ])
 
@@ -43,7 +45,30 @@ def run():
         return msg.content
 
     ch = prompt | llm | to_txt
+    
+
+    prompt2 = ChatPromptTemplate.from_messages([
+        ('system', inst),
+        ('user', txtaws),
+        ('system', f"""
+            Based on his awnsers, reply 'yes' if the user's wellbeing is okay, and 'no' if something needs to be done about it.
+        """)
+    ])
+
+    def alarm(msg):
+        msg = msg.content.lower()
+        if 'no' in msg:
+            st.write("you don't seem to be in great shape, would you like to let your manager know?")
+            if st.button("yes"):
+                with open("data/alarms.txt", 'a') as f:
+                    f.write(name + '\n')
+            if st.button("no"):
+                pass
+
+    ch2 = prompt2 | llm | alarm
+
+    ch2.invoke({})
     st.write(ch.invoke({}))
 
 if __name__ == "__main__":
-    run()
+    run('test')

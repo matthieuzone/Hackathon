@@ -20,7 +20,9 @@ def load_questions():
         elif q_type == 'ghq':
             ghq_questions.append((parts[1], question_text, parts[3] if len(parts) > 3 else None))
 
-    return mood_questions, ghq_questions
+# Charger les réponses précédentes
+df = pd.read_csv(f"data/{name}.csv", index_col=0)
+awns = {}
 
 def run(name):
     st.write("Questionnaire")
