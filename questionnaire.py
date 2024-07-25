@@ -21,10 +21,10 @@ def load_questions():
             ghq_questions.append((parts[1], question_text, parts[3] if len(parts) > 3 else None))
 
 # Charger les réponses précédentes
-df = pd.read_csv(f"data/{name}.csv", index_col=0)
-awns = {}
+
 
 def run(name):
+
     st.write("Questionnaire")
 
     # Load questions

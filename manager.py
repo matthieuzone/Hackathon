@@ -38,7 +38,7 @@ prompt = ChatPromptTemplate.from_messages([
     ('system', inst),
     ('user', txtaws),
     ('system', f"""
-        Based on their awnsers, give the manager an assesment of the wellbeing of his team, and recommendations how he can improve the work environment for their employees.
+        Based on their awnsers, give the manager a really short assesment of the wellbeing of his team, and one or two quck tips on how he can improve the work environment for their employees.
     """)
 ])
 
