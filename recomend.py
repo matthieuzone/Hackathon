@@ -69,6 +69,7 @@ def run(name):
     ch2 = prompt2 | llm | alarm
 
     st.write(ch.invoke({}))
+
     ch2.invoke({})
 
 if __name__ == "__main__":
