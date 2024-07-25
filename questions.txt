@@ -12,3 +12,4 @@ ghq|multiple|Recently, have you felt unhappy, depressed?|better than usual,as us
 ghq|multiple|Recently, have you lost confidence in yourself?|better than usual,as usual,less than usual,much less than usual
 ghq|multiple|Recently, have you thought that you are worthless?|better than usual,as usual,less than usual,much less than usual
 ghq|multiple|Recently, did you feel relatively happy overall?|better than usual,as usual,less than usual,much less than usual
+mood|open|Is there anything you would like to add?
