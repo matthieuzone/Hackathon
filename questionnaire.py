@@ -87,6 +87,7 @@ def run(name):
             st.session_state.answers = {}
             st.session_state.current_ghq_index = (st.session_state.current_ghq_index + 1) % len(ghq_questions)
             st.session_state.ghq_question = ghq_questions[st.session_state.current_ghq_index]
+            st.rerun()
 
 if __name__ == "__main__":
     run('test')
